@@ -8,7 +8,7 @@
     </settings>
 
     <!--<typeAliases>-->
-        <!--<typeAlias alias="UserAlias"  type="org.apache.ibatis.submitted.complex_property.User" />-->
+        <!--<typeAlias alias="UserAlias" type="org.apache.ibatis.submitted.complex_property.User" />-->
     <!--</typeAliases>-->
 
     <environments default="development">
