@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="NameTableTest1">
+
+    <resultMap id="NameTableTest1" type="com.angcyo.beans.NameTableTest1">
+        <id column="rid" jdbcType="FLOAT" property="rid" />
+        <result column="name_char" jdbcType="CHAR" property="name_char" />
+        <result column="name_varchar" jdbcType="VARCHAR" property="name_varchar" />
+        <result column="name_float" jdbcType="FLOAT" property="name_float" />
+        <result column="name_int" jdbcType="INTEGER" property="name_int" />
+        <result column="name_tinyint" jdbcType="TINYINT" property="name_tinyint" />
+        <result column="name_time" jdbcType="TIMESTAMP" property="name_time" />
+    </resultMap>
+
+    <select id="selectAll" resultMap="NameTableTest1"> SELECT * FROM name_table_test1 </select>
+    <select id="selectAll2" resultType="com.angcyo.beans.NameTableTest2"> SELECT * FROM name_table_test2 </select>
+    <select id="select3" parameterType="com.angcyo.beans.NameTableTest1" resultType="com.angcyo.beans.NameTableTest1">
+        SELECT * FROM name_table_test1 WHERE rid =#{rid}
+    </select>
+    <select id="select4" parameterType="int" resultType="com.angcyo.beans.NameTableTest1">
+        SELECT * FROM name_table_test1 WHERE rid=#{rid}  and name_float = 1
+    </select>
+    <select id="select5" parameterType="com.angcyo.beans.NameTableTest1" resultType="com.angcyo.beans.NameTableTest1">
+        SELECT * FROM name_table_test1 WHERE 1=1
+        <if test="rid != 0 and !&quot;&quot;.equals(&quot;angcyo&quot;) ">
+            and name_float = 1
+        </if>
+    </select>
+</mapper>
